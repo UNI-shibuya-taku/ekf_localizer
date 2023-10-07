@@ -1,0 +1,21 @@
+<launch>
+	<!-- global rosparam -->
+	<param name="use_sim_time" value="true"/>
+	
+  <!-- main -->
+	<node pkg="sq_scan_matching" name="ekf" type="ekf" output="screen">
+		<param name="sigma_imu" type="double" value="1e-5"/>
+		<param name="sigma_odom" type="double" value="1e-5"/>
+		<param name="sigma_ndt" type="double" value="1e+1"/>
+	</node>
+	<node pkg="sq_scan_matching" name="ndt" type="ndt" output="screen">
+		<param name="pc_range" type="double" value="20.0"/>
+		<param name="leafsize_source" type="double" value="0.15"/>
+		<param name="leafsize_target" type="double" value="0.2"/>
+		<param name="trans_epsilon" type="double" value="1e-3"/>
+		<param name="stepsize" type="double" value="0.1"/>
+		<param name="resolution" type="double" value="0.5"/>
+		<param name="max_iterations" type="int" value="30"/>
+	</node>
+
+</launch>
