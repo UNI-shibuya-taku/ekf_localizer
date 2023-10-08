@@ -61,7 +61,7 @@
 		<param name="base_link_frame_id" value="$(arg base_link_frame_id)" />
 		<param name="camera_frame_id" value="$(arg camera_frame_id)" />
 		<param name="velodyne_frame_id" value="$(arg velodyne_frame_id)" />
-		<rosparam command="load" file="$(find scan_matching)/config/tf/ikuta.yaml" />
+		<rosparam command="load" file="$(find ekf_localizer)/config/tf/ikuta.yaml" />
 	</node>
 
 	<!-- rviz -->
