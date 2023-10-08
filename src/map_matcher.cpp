@@ -15,7 +15,7 @@ MapMatcher::MapMatcher() :
 	private_nh_.param("map_topic_name",map_topic_name_,{"map_out"});
 	private_nh_.param("ndt_pc_topic_name",ndt_pc_topic_name_,{"ndt_pc_out"});
 	private_nh_.param("map_frame_id",map_frame_id_,{"map"});
-	private_nh_.param("is_publish_map",is_publish_map_,{false});
+	private_nh_.param("is_publish_map",is_publish_map_,{true});
 	private_nh_.param("is_pcl_offset",is_pcl_offset_,{false});
 
 	private_nh_.param("VOXEL_SIZE",VOXEL_SIZE_,{0.3});
@@ -158,6 +158,7 @@ void MapMatcher::read_map()
 		//map.header.stamp = ros::Time(0);
 		map.header.frame_id = map_frame_id_;
 		map_pub_.publish(map);
+		std::cout << "publish map point cloud!!" << std::endl;
 	}
 
 	has_read_map_ = true;
@@ -193,8 +194,8 @@ void MapMatcher::matching(pcl::PointCloud<pcl::PointXYZI>::Ptr map_pcl,pcl::Poin
 	ndt.setResolution(RESOLUTION_);
 	ndt.setMaximumIterations(MAX_ITERATION_);
 	if(map_local_pcl->points.empty() || current_local_pcl->points.empty()){
-		if(map_local_pcl->points.empty()) std::cout << "map_pcl is empty" << std::endl;
-		if(current_local_pcl->points.empty()) std::cout << "local_pcl is empty" << std::endl;
+		if(map_local_pcl->points.empty()) std::cout << "map_local_pcl is empty" << std::endl;
+		if(current_local_pcl->points.empty()) std::cout << "current_local_pcl is empty" << std::endl;
 		return;
 	}
 	ndt.setInputTarget(map_local_pcl);
@@ -304,6 +305,9 @@ void MapMatcher::process()
 	ros::Rate rate(20.0);
 	while(ros::ok()){
 		if(has_read_map_ && has_received_ekf_pose_ && has_received_pc_){
+			std::cout << "is_read_map: " << has_read_map_ << std::endl;
+			std::cout << "is_ekf_pose: " << has_received_ekf_pose_ << std::endl;
+			std::cout << "is_rec_pc: " << has_received_pc_ << std::endl;
 			matching(map_pcl_,current_pcl_);
 			has_received_pc_ = false;
 			has_received_ekf_pose_ = false;
