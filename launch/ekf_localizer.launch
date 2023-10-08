@@ -66,5 +66,6 @@
 		</node>
 	</group>-->
 
-
+	<!-- rviz -->
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(ekf_localizer)/config/rviz/ekf_localizer.rviz" />	
 </launch>
