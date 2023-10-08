@@ -154,7 +154,7 @@ void MapMatcher::read_map()
 	// publish map
 	if(is_publish_map_){
 		sensor_msgs::PointCloud2 map;
-		pcl::toROSMsg(*map_pcl_,map);
+		pcl::toROSMsg(*map_pcl_, map);
 		//map.header.stamp = ros::Time(0);
 		map.header.frame_id = map_frame_id_;
 		map_pub_.publish(map);
@@ -311,6 +311,13 @@ void MapMatcher::process()
 			matching(map_pcl_,current_pcl_);
 			has_received_pc_ = false;
 			has_received_ekf_pose_ = false;
+
+			sensor_msgs::PointCloud2 map;
+			pcl::toROSMsg(*map_pcl_, map);
+			//map.header.stamp = ros::Time(0);
+			map.header.frame_id = map_frame_id_;
+			map_pub_.publish(map);
+			std::cout << "publish map point cloud!!" << std::endl;
 		}
 		else if(has_read_map_) std::cout << "Waiting msg" << std::endl;
 		ros::spinOnce();
