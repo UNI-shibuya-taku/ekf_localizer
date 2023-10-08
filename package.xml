@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>rwrc21_recogni_localizer</name>
+  <name>ekf_localizer</name>
   <version>0.0.0</version>
-  <description>The rwrc21_recogni_localizer package</description>
+  <description>The ekf_localizer package</description>
   <maintainer email="amsl@todo.todo">amsl</maintainer>
   <license>TODO</license>
 

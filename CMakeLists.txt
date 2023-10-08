@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(rwrc21_recogni_localizer)
+project(ekf_localizer)
 
 add_compile_options(-o2 -g -Wall)
 
