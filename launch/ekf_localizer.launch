@@ -6,7 +6,7 @@
 	<arg name="imu_topic_name" default="/sensing/imu/gx5/imu/data" />
 	<arg name="ekf_pose_topic_name" default="/ekf_pose" />
 	<arg name="odom_topic_name" default="/ypspur/odom" />
-	<arg name="velodyne_topic_name" default="/velodyne_points" />
+	<arg name="velodyne_topic_name" default="/sensing/velodyne_lower/velodyne_points" />
 	<arg name="map_topic_name" default="/global_map" />
 	<arg name="ndt_pc_topic_name" default="/ndt_pc" />
 
