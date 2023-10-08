@@ -1,0 +1,12 @@
+camera_x: 0.0
+camera_y: 0.0 
+camera_z: 1.0
+camera_roll: 0.0
+camera_pitch: 0.0
+camera_yaw: 0.0
+velodyne_x: 0.0
+velodyne_y: 0.0
+velodyne_z: 1.3
+velodyne_roll: 0.0
+velodyne_pitch: 0.0
+velodyne_yaw: 0.0
