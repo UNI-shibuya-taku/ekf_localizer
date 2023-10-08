@@ -2,7 +2,7 @@
 <launch>
 	
 	<!-- ekf -->
-	<node pkg="rwrc21_recogni_localizer" type="ekf_node" name="ekf_node" output="screen" >
+	<node pkg="ekf_localizer" type="ekf_node" name="ekf_node" output="screen" >
 		<param name="ndt_pose_topic_name" value="/ndt_pose" />
 		<param name="imu_topic_name" value="/imu/data" />
 		<param name="ekf_pose_topic_name" value="/ekf_pose" />
