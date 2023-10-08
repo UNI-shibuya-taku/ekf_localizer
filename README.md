@@ -1,4 +1,3 @@
-# rwrc21_recogni_localizer
 
 ## Environment
 - Ubuntu 20.04
@@ -15,9 +14,6 @@
 
 ## How to Use
 ```
-roslaunch rwrc21_recogni_localizer ekf.launch
+roslaunch ???.launch
 ```
 
-```
-roslaunch rwrc21_recogni_localizer map_matcher.launch
-```
