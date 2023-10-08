@@ -67,5 +67,5 @@
 	</group>-->
 
 	<!-- rviz -->
-	<node pkg="rviz" type="rviz" name="rviz" args="-d $(ekf_localizer)/config/ekf_localizer.rviz" />	
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find ekf_localizer)/config/ekf_localizer.rviz" />	
 </launch>
