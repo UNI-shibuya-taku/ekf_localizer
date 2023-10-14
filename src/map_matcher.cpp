@@ -159,7 +159,7 @@ void MapMatcher::read_map()
 		pcl::toROSMsg(*map_pcl_, map);
 		//map.header.stamp = ros::Time(0);
 		// map.header.frame_id = map_frame_id_;
-		map.header.frame_id = "map";
+		map.header.frame_id = "velodyne";
 		map_pub_.publish(map);
 		std::cout << "publish map point cloud!!" << std::endl;
 	// }
@@ -172,7 +172,7 @@ void MapMatcher::read_map()
 	has_read_map_ = true;
 }
 
-void MapMatcher::downsample_pcl(pcl::PointCloud<pcl::PointXYZI>::Ptr input_pcl,pcl::PointCloud<pcl::PointXYZI>::Ptr& output_pcl,double voxel_size)
+void MapMatcher::downsample_pcl(pcl::PointCloud<pcl::PointXYZI>::Ptr input_pcl,pcl::PointCloud<pcl::PointXYZI>::Ptr& output_pcl, double voxel_size)
 {
 	pcl::VoxelGrid<pcl::PointXYZI> voxel_sampler;
 	voxel_sampler.setLeafSize(voxel_size,voxel_size,voxel_size);
