@@ -162,6 +162,11 @@ void MapMatcher::read_map()
 		map_pub_.publish(map);
 		std::cout << "publish map point cloud!!" << std::endl;
 	}
+	int count_pub = 0;
+	while(count_pub < 10000){
+		map_pub_.publish(map);
+		count_pub ++;
+	}
 
 	has_read_map_ = true;
 }
