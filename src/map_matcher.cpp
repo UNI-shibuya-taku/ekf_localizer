@@ -142,9 +142,11 @@ void MapMatcher::read_map()
 	}
 	else std::cout << "Load: " << pcd_file_path_ << std::endl;
 
+	std::cout  << "raw map_points: " << raw_cloud->points.size() << std::endl;
 	// downsampling
 	if(VOXEL_SIZE_ > 0) downsample_pcl(raw_cloud,map_pcl_,VOXEL_SIZE_);
 	else map_pcl_ = raw_cloud;
+	std::cout  << "down map_points: " << map_pcl_->points.size() << std::endl;
 
 	// offset
 	Eigen::Vector3f offset_position(MAP_OFFSET_X_,MAP_OFFSET_Y_,MAP_OFFSET_Z_);
