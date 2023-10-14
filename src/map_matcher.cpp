@@ -158,15 +158,16 @@ void MapMatcher::read_map()
 		sensor_msgs::PointCloud2 map;
 		pcl::toROSMsg(*map_pcl_, map);
 		//map.header.stamp = ros::Time(0);
-		map.header.frame_id = map_frame_id_;
+		// map.header.frame_id = map_frame_id_;
+		map.header.frame_id = "map";
 		map_pub_.publish(map);
 		std::cout << "publish map point cloud!!" << std::endl;
 	// }
-	int count_pub = 0;
-	while(count_pub < 10000){
-		map_pub_.publish(map);
-		count_pub ++;
-	}
+	// int count_pub = 0;
+	// while(count_pub < 10000){
+	// 	map_pub_.publish(map);
+	// 	count_pub ++;
+	// }
 
 	has_read_map_ = true;
 }

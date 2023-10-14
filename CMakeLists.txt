@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(ekf_localizer)
 
-add_compile_options(-o2 -g -Wall)
+SET(CMAKE_CXX_FLAGS "-std=c++11 -O2 -g -Wall ${CMAKE_CXX_FLAGS}")
+add_compile_options(-std=c++14)
+# add_compile_options(-o2 -g -Wall)
 
 IF(NOT CMAKE_BUILD_TYPE)
     SET(CMAKE_BUILD_TYPE Release)
