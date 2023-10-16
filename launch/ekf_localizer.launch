@@ -65,8 +65,6 @@
 		<rosparam command="load" file="$(find ekf_localizer)/config/tf/ikuta.yaml" />
 	</node>
 
-	<!-- localmap_creator -->
-	<include file="$(find nav_manager)/launch/simple_localmap_creator.launch"/>
 
 	<!-- <node pkg="tf" type="static_transform_publisher" name="kinect_base_link5" args="0 0 0 0 0 0 /map /velodyne_lower 100"/> -->
 	 <node name="map_to_lidar" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 0 map velodyne_lower"/>
