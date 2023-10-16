@@ -38,8 +38,9 @@
 		<rosparam command="load" file="$(find ekf_localizer)/config/ekf/ekf.yaml" />
 	</node>
 
+
 	<!-- map_matcher -->
-	<node pkg="ekf_localizer" type="map_matcher_node" name="map_matcher_node" output="screen" >
+	<node pkg="ekf_localizer" type="map_matcher_node" name="map_matcher_node" >
 		<!-- <param name="pcd_file_path" value="$(arg pcd_path)" /> -->
 		<param name="pcd_file_path" value="/home/ubuntu/Downloads/0.15_map_all.pcd" />
 		<param name="pc_topic_name" value="$(arg velodyne_topic_name)" />
