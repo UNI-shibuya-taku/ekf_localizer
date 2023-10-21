@@ -83,3 +83,6 @@ add_executable(tf_broadcaster_node
     src/tf_broadcaster_node.cpp
 )
 target_link_libraries(tf_broadcaster_node ${catkin_LIBRARIES})
+
+add_executable(dynamic_tf_cub src/dynamic_tf_cub.cpp)
+target_link_libraries(dynamic_tf_cub ${catkin_LIBRARIES})
