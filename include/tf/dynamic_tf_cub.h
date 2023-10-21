@@ -2,7 +2,7 @@
 #define __DYNAMIC_TF_CUB_H
 #include <ros/ros.h>
 #include <nav_msgs/Odometry.h>
-#include <nav_msgs/PoseStamped.h>
+#include <geometry_msgs/PoseStamped.h>
 #include <geometry_msgs/TransformStamped.h>
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_ros/transform_broadcaster.h>
