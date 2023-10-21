@@ -17,6 +17,7 @@ public:
 private:
     //method
     void pub_dynamic_tf();
+    void current_pose_callback(const geometry_msgs::PoseStamped::ConstPtr&);
     //parameter
 
     //member
