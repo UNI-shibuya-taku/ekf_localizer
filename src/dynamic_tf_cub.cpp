@@ -2,7 +2,7 @@
 DynamicTfCub::DynamicTfCub():private_nh("~")
 {
     /*subscriber*/
-    sub_current_pose = nh.subscribe("/ekf_pose",10,&NextWaypointCreator::current_pose_callback,this);
+    sub_current_pose = nh.subscribe("/ekf_pose",10,&DynamicTfCub::current_pose_callback,this);
 }
 void DynamicTfCub::current_pose_callback(const geometry_msgs::PoseStamped::ConstPtr& msg)
 {
@@ -31,7 +31,7 @@ void DynamicTfCub::pub_dynamic_tf()
 
 void DynamicTfCub::process()
 {
-    ros::Spin();
+    ros::spin();
 }
 
 int main (int argc,char **argv)
