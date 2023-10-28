@@ -19,16 +19,15 @@
 
 	<!-- static tf -->
 	<!-- 3D-LiDAR_to_base_link -->
-	 <node name="lidar_to_baselink" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 0 base_link 3D-LiDAR_link"/>
+	 <node name="lidar_to_baselink" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 0 base_link PandarXT-32"/>
 	<!-- Wheel_to_base_link -->
-	 <node name="odom_to_baselink" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 0 base_link odom"/>
+	 <node name="odom_to_baselink" pkg="tf2_ros" type="static_transform_publisher" args="0.65 0 -0.2925 0 0 0 0 base_link odom"/>
 	<!-- IMU_to_base_link -->
 	 <!-- <node name="imu_to_baselink" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 0 base_link imu_link"/> -->
 
 	<!-- dynamic tf -->
 	<!-- map_to_base_link -->
 	<node pkg="ekf_localizer" type="dynamic_tf_cub" name="dynamic_tf_cub" >
-		<!-- <param name="pcd_file_path" value="/home/ubuntu/Downloads/0.15_map_all.pcd" /> -->
 	</node>
 
 
