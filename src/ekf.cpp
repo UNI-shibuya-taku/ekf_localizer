@@ -142,7 +142,9 @@ void EKF::motion_update_3DoF(double dt)
 {
 	double nu = 0.9*odom_.twist.twist.linear.x;
 	// double omega = imu_.angular_velocity.z;
-	double omega = odom_.twist.twist.angular.z;
+	// double omega = odom_.twist.twist.angular.z;
+	double omega = get_yaw(odom_.pose.orientation);
+
 
 	if(std::fabs(omega) < 1e-3) omega = 1e-10;
 
@@ -189,6 +191,14 @@ void EKF::motion_update_3DoF(double dt)
 	*/
 
 	P_ = G*P_*G.transpose() + A*M*A.transpose();
+}
+
+double EKF::get_yaw(geometry_msgs::Quaternion q)
+{
+    double roll , pitch , yaw;
+    tf::Quaternion quat(q.x, q.y, q.z, q.w);
+    tf::Matrix3x3(quat).getRPY(roll, pitch, yaw);
+    return yaw;
 }
 
 void EKF::motion_update_6DoF(double dt)

@@ -49,6 +49,8 @@ private:
 	Eigen::Matrix3d calc_rotation_matrix(Eigen::Vector3d euler_angle);
 	Eigen::VectorXd measurement_function(Eigen::VectorXd x,Eigen::MatrixXd h);
 
+	double Particle::get_yaw(geometry_msgs::Quaternion q);
+
 	ros::NodeHandle nh_;
 	ros::NodeHandle private_nh_;
 	ros::Subscriber ndt_pose_sub_;
