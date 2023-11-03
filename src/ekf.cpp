@@ -5,33 +5,33 @@ EKF::EKF() :
 	has_received_odom_(false), has_received_imu_(false), has_received_ndt_pose_(false),
 	is_first_(true), is_respawn_(false)
 {
-	private_nh_.param("ndt_pose_topic_name",ndt_pose_topic_name_,{"/ndt_pose_in"});
-	private_nh_.param("imu_topic_name",imu_topic_name_,{"/imu_in"});
-	private_nh_.param("ekf_pose_topic_name",ekf_pose_topic_name_,{"/ekf_out"});
-	private_nh_.param("map_frame_id",map_frame_id_,{"map"});
-	private_nh_.param("odom_frame_id",odom_frame_id_,{"odom"});
-	private_nh_.param("base_link_frame_id",base_link_frame_id_,{"base_link"});
-	private_nh_.param("odom_topic_name",odom_topic_name_,{"odom"});
-	private_nh_.param("is_3DoF",is_3DoF_,{true});
-	private_nh_.param("is_odom_tf",is_odom_tf_,{false});
+	private_nh_.param("ndt_pose_topic_name", ndt_pose_topic_name_, {"/ndt_pose_in"});
+	private_nh_.param("imu_topic_name", imu_topic_name_, {"/imu_in"});
+	private_nh_.param("ekf_pose_topic_name", ekf_pose_topic_name_, {"/ekf_out"});
+	private_nh_.param("map_frame_id", map_frame_id_, {"map"});
+	private_nh_.param("odom_frame_id", odom_frame_id_, {"odom"});
+	private_nh_.param("base_link_frame_id", base_link_frame_id_, {"base_link"});
+	private_nh_.param("odom_topic_name", odom_topic_name_, {"odom"});
+	private_nh_.param("is_3DoF", is_3DoF_, {true});
+	private_nh_.param("is_odom_tf", is_odom_tf_, {false});
 
 	//private_nh_.param("measurement_topic_name",measurement_topic_name_,{"/task/measurement_update"});
 	private_nh_.param("respawn_pose_topic_name",respawn_pose_topic_name_,{"/position/respawn"});
 
-	private_nh_.param("INIT_X",INIT_X_,{0.0});
-	private_nh_.param("INIT_Y",INIT_Y_,{0.0});
-	private_nh_.param("INIT_Z",INIT_Z_,{0.0});
-	private_nh_.param("INIT_ROLL",INIT_ROLL_,{0.0});
-	private_nh_.param("INIT_PITCH",INIT_PITCH_,{0.0});
-	private_nh_.param("INIT_YAW",INIT_YAW_,{0.0});
-	private_nh_.param("INIT_SIGMA",INIT_SIGMA_,{1e-3});
-	private_nh_.param("SIGMA_IMU",SIGMA_IMU_,{1e-3});
-	private_nh_.param("SIGMA_ODOM",SIGMA_ODOM_,{1e-3});
-	private_nh_.param("SIGMA_NDT",SIGMA_NDT_,{1e-3});
-	private_nh_.param("MOTION_NOISE_NN",MOTION_NOISE_NN_,{1e-3});
-	private_nh_.param("MOTION_NOISE_NO",MOTION_NOISE_NO_,{1e-3});
-	private_nh_.param("MOTION_NOISE_ON",MOTION_NOISE_ON_,{1e-3});
-	private_nh_.param("MOTION_NOISE_OO",MOTION_NOISE_OO_,{1e-3});
+	private_nh_.param("INIT_X", INIT_X_, {0.0});
+	private_nh_.param("INIT_Y", INIT_Y_, {0.0});
+	private_nh_.param("INIT_Z", INIT_Z_, {0.0});
+	private_nh_.param("INIT_ROLL", INIT_ROLL_, {0.0});
+	private_nh_.param("INIT_PITCH", INIT_PITCH_, {0.0});
+	private_nh_.param("INIT_YAW", INIT_YAW_, {0.0});
+	private_nh_.param("INIT_SIGMA", INIT_SIGMA_, {1e-3});
+	private_nh_.param("SIGMA_IMU", SIGMA_IMU_, {1e-3});
+	private_nh_.param("SIGMA_ODOM", SIGMA_ODOM_, {1e-3});
+	private_nh_.param("SIGMA_NDT", SIGMA_NDT_,{1e-3});
+	private_nh_.param("MOTION_NOISE_NN", MOTION_NOISE_NN_, {1e-3});
+	private_nh_.param("MOTION_NOISE_NO", MOTION_NOISE_NO_, {1e-3});
+	private_nh_.param("MOTION_NOISE_ON", MOTION_NOISE_ON_, {1e-3});
+	private_nh_.param("MOTION_NOISE_OO", MOTION_NOISE_OO_, {1e-3});
 
 	ndt_pose_sub_ = nh_.subscribe(ndt_pose_topic_name_,10,&EKF::ndt_pose_callback,this);
 	imu_sub_ = nh_.subscribe(imu_topic_name_,10,&EKF::imu_callback,this);
@@ -51,7 +51,6 @@ EKF::EKF() :
 
 EKF::~EKF()
 {
-	//delete kalman_filter;
 }
 
 void EKF::ndt_pose_callback(const geometry_msgs::PoseStampedConstPtr& msg)
@@ -477,7 +476,7 @@ void EKF::process()
 	double dt;
 	ros::Rate rate(10);
 	while(ros::ok()){
-		if(has_received_imu_ && has_received_odom_){
+		if(/*has_received_imu_ &&*/ has_received_odom_){
 			now_time_ = ros::Time::now();
 			if(is_first_){
 				dt = 1.0/(double)10;
