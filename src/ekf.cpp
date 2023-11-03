@@ -143,7 +143,7 @@ void EKF::motion_update_3DoF(double dt)
 	double nu = 0.9*odom_.twist.twist.linear.x;
 	// double omega = imu_.angular_velocity.z;
 	// double omega = odom_.twist.twist.angular.z;
-	double omega = get_yaw(odom_.pose.orientation);
+	double omega = get_yaw(odom_.pose.pose.orientation);
 
 
 	if(std::fabs(omega) < 1e-3) omega = 1e-10;
