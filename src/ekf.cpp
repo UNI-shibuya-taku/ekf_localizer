@@ -33,6 +33,7 @@ EKF::EKF() :
 	private_nh_.param("MOTION_NOISE_ON", MOTION_NOISE_ON_, {1e-3});
 	private_nh_.param("MOTION_NOISE_OO", MOTION_NOISE_OO_, {1e-3});
 
+
 	ndt_pose_sub_ = nh_.subscribe(ndt_pose_topic_name_,10,&EKF::ndt_pose_callback,this);
 	imu_sub_ = nh_.subscribe(imu_topic_name_,10,&EKF::imu_callback,this);
 	odom_sub_ = nh_.subscribe(odom_topic_name_,10,&EKF::odom_callback,this);
@@ -142,8 +143,8 @@ void EKF::motion_update_3DoF(double dt)
 {
 	double nu = 0.9*odom_.twist.twist.linear.x;
 	// double omega = imu_.angular_velocity.z;
-	// double omega = odom_.twist.twist.angular.z;
-	double omega = get_yaw(odom_.pose.pose.orientation);
+	double omega = odom_.twist.twist.angular.z;
+	// double omega = get_yaw(odom_.pose.pose.orientation);
 
 
 	if(std::fabs(omega) < 1e-3) omega = 1e-10;
