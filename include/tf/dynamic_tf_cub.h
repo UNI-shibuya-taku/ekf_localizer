@@ -17,6 +17,7 @@ public:
 private:
     //method
     void pub_dynamic_tf();
+    void pub_static_tf();
     void current_pose_callback(const geometry_msgs::PoseStamped::ConstPtr&);
     //parameter
 
@@ -28,6 +29,7 @@ private:
 
     geometry_msgs::PoseStamped current_pose;
     tf2_ros::TransformBroadcaster dynamic_br_;
+    tf2_ros::TransformBroadcaster static_br_;
 };
 
 #endif

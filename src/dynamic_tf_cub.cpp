@@ -8,8 +8,28 @@ void DynamicTfCub::current_pose_callback(const geometry_msgs::PoseStamped::Const
 {
     current_pose = *msg;
     pub_dynamic_tf();
+    pub_static_tf();
 }
 
+void DynamicTfCub::pub_static_tf()
+{
+	geometry_msgs::TransformStamped static_transform_stamped;
+	static_transform_stamped.header.stamp = ros::Time::now();
+	static_transform_stamped.header.frame_id = "base_link";
+	static_transform_stamped.child_frame_id = "Pandar";
+
+	static_transform_stamped.transform.translation.x = 0.0;
+	static_transform_stamped.transform.translation.y = 0.0;
+	static_transform_stamped.transform.translation.z = 0.0;
+
+	// tf2::Quaternion quaternion;
+	static_transform_stamped.transform.rotation.x = 0.0;
+	static_transform_stamped.transform.rotation.y = 0.0;
+	static_transform_stamped.transform.rotation.z = 0.0;
+	static_transform_stamped.transform.rotation.w = 1.0;
+
+    static_br_.sendTransform(transformStamped);
+}
 void DynamicTfCub::pub_dynamic_tf()
 {
     geometry_msgs::TransformStamped transformStamped;
