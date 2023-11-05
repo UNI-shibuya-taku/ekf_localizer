@@ -5,7 +5,7 @@
 
 	<!-- static tf -->
 	<!-- 3D-LiDAR_to_base_link -->
-	 <node name="lidar_to_baselink" pkg="tf2_ros" type="static_transform_publisher" args="0 0 -0.3947 0 0 0 0 base_link Pandar"/>
+	 <node name="lidar_to_baselink" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 base_link Pandar"/>
 	<!-- Wheel_to_base_link -->
 	 <node name="odom_to_baselink" pkg="tf2_ros" type="static_transform_publisher" args="0.65 0 -0.2925 0  0 0 base_link odometry"/>
 	<!-- IMU_to_base_link -->
