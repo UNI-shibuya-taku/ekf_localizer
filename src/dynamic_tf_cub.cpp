@@ -28,7 +28,7 @@ void DynamicTfCub::pub_static_tf()
 	static_transform_stamped.transform.rotation.z = 0.0;
 	static_transform_stamped.transform.rotation.w = 1.0;
 
-    static_br_.sendTransform(transformStamped);
+    static_br_.sendTransform(static_transform_stamped);
 }
 void DynamicTfCub::pub_dynamic_tf()
 {
