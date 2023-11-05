@@ -194,13 +194,13 @@ void EKF::motion_update_3DoF(double dt)
 	P_ = G*P_*G.transpose() + A*M*A.transpose();
 }
 
-double EKF::get_yaw(geometry_msgs::Quaternion q)
-{
-    double roll , pitch , yaw;
-    tf::Quaternion quat(q.x, q.y, q.z, q.w);
-    tf::Matrix3x3(quat).getRPY(roll, pitch, yaw);
-    return yaw;
-}
+// double EKF::get_yaw(geometry_msgs::Quaternion q)
+// {
+//     double roll , pitch , yaw;
+//     tf::Quaternion quat(q.x, q.y, q.z, q.w);
+//     tf::Matrix3x3(quat).getRPY(roll, pitch, yaw);
+//     return yaw;
+// }
 
 void EKF::motion_update_6DoF(double dt)
 {
