@@ -8,7 +8,7 @@ void DynamicTfCub::current_pose_callback(const geometry_msgs::PoseStamped::Const
 {
     current_pose = *msg;
     pub_dynamic_tf();
-    pub_static_tf();
+    // pub_static_tf();
 }
 
 void DynamicTfCub::pub_static_tf()
