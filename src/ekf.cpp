@@ -141,7 +141,7 @@ void EKF::calc_rpy_from_quat(geometry_msgs::Quaternion q,double& roll,double& pi
 
 void EKF::motion_update_3DoF(double dt)
 {
-	double nu = 0.9*odom_.twist.twist.linear.x;
+	double nu = odom_.twist.twist.linear.x;
 	// double omega = imu_.angular_velocity.z;
 	double omega = odom_.twist.twist.angular.z;
 	// double omega = get_yaw(odom_.pose.pose.orientation);
