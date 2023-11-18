@@ -162,7 +162,7 @@ void MapMatcher::read_map()
 		int count_pub = 0;
 		map.header.frame_id = "map";
 		map_pub_.publish(map);
-		while(count_pub < 10000){
+		while(count_pub < 1000000){
 			map_pub_.publish(map);
 			count_pub ++;
 		}
