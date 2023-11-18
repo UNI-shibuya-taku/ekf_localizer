@@ -45,6 +45,7 @@ MapMatcher::MapMatcher() :
 	buffer_.reset(new tf2_ros::Buffer);
 	listener_.reset(new tf2_ros::TransformListener(*buffer_));
 	std::cout << "is_publish_map_: " << is_publish_map_ << std::endl;
+	std::cout << "MATCHING_SCORE_TH_: " << MATCHING_SCORE_TH_ << std::endl;
 }
 
 void MapMatcher::pc_callback(const sensor_msgs::PointCloud2ConstPtr& msg)
@@ -162,7 +163,7 @@ void MapMatcher::read_map()
 		int count_pub = 0;
 		map.header.frame_id = "map";
 		map_pub_.publish(map);
-		while(count_pub < 1000){
+		while(count_pub < 10000){
 			map_pub_.publish(map);
 			count_pub ++;
 		}
