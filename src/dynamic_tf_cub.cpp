@@ -35,7 +35,7 @@ void DynamicTfCub::pub_dynamic_tf()
     geometry_msgs::TransformStamped transformStamped;
     transformStamped.header.stamp = ros::Time::now();
     transformStamped.header.frame_id = "map";
-    transformStamped.child_frame_id = "base_link";
+    transformStamped.child_frame_id = "base_footprint";
     transformStamped.transform.translation.x = current_pose.pose.position.x;
     transformStamped.transform.translation.y = current_pose.pose.position.y;
     transformStamped.transform.translation.z = 0.0;
