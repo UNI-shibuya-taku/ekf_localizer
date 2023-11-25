@@ -32,6 +32,7 @@
 		<param name="base_link_frame_id" value="$(arg base_link_frame_id)" />
 		<param name="is_3DoF" value="true" />
 		<param name="is_odom_tf" value="false" />
+		<param name="SIGMA_ODOM" value="1e-1" />
 
 		<param name="respawn_pose_topic_name" value="$(arg respawn_pose_topic_name)" />
 
