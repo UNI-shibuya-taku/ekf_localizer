@@ -29,7 +29,7 @@ private:
 	double last_yaw;
 };
 OdomFilter::OdomFilter() :
-	private_nh_("~"),
+	private_nh_("~")
 {
 	// private_nh_.param("ndt_pose_topic_name", ndt_pose_topic_name_, {"/ndt_pose_in"});
 	// private_nh_.param("INIT_X", INIT_X_, {0.0});
