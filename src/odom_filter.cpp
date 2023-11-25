@@ -2,6 +2,10 @@
 #include <nav_msgs/Odometry.h>
 #include "tf/transform_broadcaster.h"
 #include "tf/transform_listener.h"
+#include <tf2/utils.h>
+#include <tf2_ros/transform_listener.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
+#include <tf2_eigen/tf2_eigen.h>
 // #include <sensor_msgs/Imu.h>
 // #include <geometry_msgs/PoseStamped.h>
 // #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
@@ -31,8 +35,6 @@ private:
 OdomFilter::OdomFilter() :
 	private_nh_("~")
 {
-	// private_nh_.param("ndt_pose_topic_name", ndt_pose_topic_name_, {"/ndt_pose_in"});
-	// private_nh_.param("INIT_X", INIT_X_, {0.0});
 	odom_sub_ = nh_.subscribe("/atom/odometry",10,&OdomFilter::odom_callback,this);
 	odom_filter_pub_ = nh_.advertise<nav_msgs::Odometry>("/atom/odometry/filter",10);
 }
@@ -50,7 +52,8 @@ void OdomFilter::odom_callback(const nav_msgs::OdometryConstPtr& msg)
 {
 	current_odom_ = *msg;
 	// filterinng
-	current_yaw = get_yaw(current_odom_.pose.pose.orientation);
+	// current_yaw = get_yaw(current_odom_.pose.pose.orientation);
+	current_yaw = tf2::getYaw(msg_odom->pose.pose.orientation);
 	std::cout << "current_yaw: " << current_yaw << std::endl;
 	if(init_callback == true && fabs(current_yaw - last_yaw) < 10.0){
 		odom_filter_pub_.publish(current_odom_);
