@@ -53,7 +53,7 @@ void OdomFilter::odom_callback(const nav_msgs::OdometryConstPtr& msg)
 	current_odom_ = *msg;
 	// filterinng
 	// current_yaw = get_yaw(current_odom_.pose.pose.orientation);
-	current_yaw = tf2::getYaw(msg_odom->pose.pose.orientation);
+	current_yaw = tf2::getYaw(current_odom_.pose.pose.orientation);
 	std::cout << "current_yaw: " << current_yaw << std::endl;
 	if(init_callback == true && fabs(current_yaw - last_yaw) < 10.0){
 		odom_filter_pub_.publish(current_odom_);
