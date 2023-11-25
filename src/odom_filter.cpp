@@ -56,6 +56,7 @@ void OdomFilter::odom_callback(const nav_msgs::OdometryConstPtr& msg)
 	current_yaw = tf2::getYaw(current_odom_.pose.pose.orientation);
 	double diff_yaw = current_yaw - last_yaw;
     diff_yaw = atan2(sin(diff_yaw), cos(diff_yaw));
+	std::cout << "curr_yaw: " << current_yaw << std::endl;
 	std::cout << "diff_yaw: " << diff_yaw << std::endl;
 	if(init_callback == true && diff_yaw < 0.05){
 		odom_filter_pub_.publish(current_odom_);
@@ -63,15 +64,12 @@ void OdomFilter::odom_callback(const nav_msgs::OdometryConstPtr& msg)
 	last_yaw = current_yaw;
 	init_callback = true;
 }
-
 void OdomFilter::process()
 {
 	while(ros::ok()){
 		ros::spinOnce();
-		// rate.sleep();
 	}
 }
-
 int main (int argc,char **argv)
 {
     ros::init(argc, argv, "odom_filter");
