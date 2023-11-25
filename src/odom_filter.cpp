@@ -57,7 +57,7 @@ void OdomFilter::odom_callback(const nav_msgs::OdometryConstPtr& msg)
 	double diff_yaw = current_yaw - last_yaw;
     diff_yaw = atan2(sin(diff_yaw), cos(diff_yaw));
 	std::cout << "diff_yaw: " << diff_yaw << std::endl;
-	if(init_callback == true && diff_yaw < 10.0){
+	if(init_callback == true && diff_yaw < 0.05){
 		odom_filter_pub_.publish(current_odom_);
 	}
 	last_yaw = current_yaw;
