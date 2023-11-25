@@ -193,10 +193,10 @@ void MapMatcher::matching(pcl::PointCloud<pcl::PointXYZI>::Ptr map_pcl,pcl::Poin
 	pcl::PointCloud<pcl::PointXYZI>::Ptr current_local_pcl(new pcl::PointCloud<pcl::PointXYZI>);
 	std::cout << "map_pcl_ size: " << map_pcl_->points.size() << std::endl;
 	set_pcl(map_pcl_, map_local_pcl, ekf_pose_.pose.position.x, ekf_pose_.pose.position.y, ekf_pose_.pose.position.z);
-	std::cout << "map_local_pcl_ size: " << map_local_pcl_->points.size() << std::endl;
+	std::cout << "map_local_pcl_ size: " << map_local_pcl->points.size() << std::endl;
 	std::cout << "cur_pcl_ size: " << current_pcl_->points.size() << std::endl;
 	set_pcl(current_pcl_,current_local_pcl,0.0,0.0,0.0);
-	std::cout << "cur_local_pcl_ size: " << current_local_pcl_->points.size() << std::endl;
+	std::cout << "cur_local_pcl_ size: " << current_local_pcl->points.size() << std::endl;
 
 	// initialize
 	//Eigen::AngleAxisf init_rotation(msg_to_quat_eigen(ekf_pose_.pose.orientation));
