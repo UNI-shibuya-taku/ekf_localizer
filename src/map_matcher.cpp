@@ -111,6 +111,7 @@ void MapMatcher::set_pcl(pcl::PointCloud<pcl::PointXYZI>::Ptr input_pcl,pcl::Poi
 	pass.setFilterFieldName("x");
 	pass.setFilterLimits(-LIMIT_RANGE_ + x,LIMIT_RANGE_ + x);
 	pass.filter(*output_pcl);
+
 	pass.setInputCloud(output_pcl);
 	pass.setFilterFieldName("y");
 	pass.setFilterLimits(-LIMIT_RANGE_ + y,LIMIT_RANGE_ + y);
@@ -186,7 +187,7 @@ void MapMatcher::matching(pcl::PointCloud<pcl::PointXYZI>::Ptr map_pcl,pcl::Poin
 	// passthrough
 	pcl::PointCloud<pcl::PointXYZI>::Ptr map_local_pcl(new pcl::PointCloud<pcl::PointXYZI>);
 	pcl::PointCloud<pcl::PointXYZI>::Ptr current_local_pcl(new pcl::PointCloud<pcl::PointXYZI>);
-	set_pcl(map_pcl_, map_local_pcl, ekf_pose_.pose.position.x,ekf_pose_.pose.position.y,ekf_pose_.pose.position.z);
+	set_pcl(map_pcl_, map_local_pcl, ekf_pose_.pose.position.x, ekf_pose_.pose.position.y, ekf_pose_.pose.position.z);
 	set_pcl(current_pcl_,current_local_pcl,0.0,0.0,0.0);
 
 	// initialize
