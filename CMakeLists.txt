@@ -86,3 +86,6 @@ target_link_libraries(tf_broadcaster_node ${catkin_LIBRARIES})
 
 add_executable(dynamic_tf_cub src/dynamic_tf_cub.cpp)
 target_link_libraries(dynamic_tf_cub ${catkin_LIBRARIES})
+
+add_executable(odom_filter src/odom_filter.cpp)
+target_link_libraries(odom_filter ${catkin_LIBRARIES})
