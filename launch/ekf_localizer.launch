@@ -40,7 +40,7 @@
 
 
 	<!-- map_matcher -->
-	<node pkg="ekf_localizer" type="map_matcher_node" name="map_matcher_node" >
+	<node pkg="ekf_localizer" type="map_matcher_node" name="map_matcher_node" output="screen">
 		<!-- <param name="pcd_file_path" value="$(arg pcd_path)" /> -->
 		<param name="pcd_file_path" value="/home/ubuntu/Downloads/test_trans.pcd" />
 		<param name="pc_topic_name" value="$(arg velodyne_topic_name)" />
