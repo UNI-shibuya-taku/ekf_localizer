@@ -68,7 +68,7 @@ void OdomFilter::odom_callback(const nav_msgs::OdometryConstPtr& msg)
 
 	// std::cout << "curr_yaw: " << current_yaw << std::endl;
 	// std::cout << "diff_yaw: " << diff_yaw << std::endl;
-	if(init_callback == true && diff_yaw < 0.05){
+	if(init_callback == true && left_wheel < 20 && right_wheel < 20){
 		odom_filter_pub_.publish(current_odom_);
 	}
 	last_yaw = current_yaw;
