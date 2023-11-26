@@ -62,7 +62,7 @@ void OdomFilter::odom_callback(const nav_msgs::OdometryConstPtr& msg)
     diff_yaw = atan2(sin(diff_yaw), cos(diff_yaw));
 
 	double left_wheel = ((diff_linear+0.245*tan(diff_yaw*M_PI/180)/2) / (M_PI*0.1025)*180);
-	double left_wheel = ((diff_linear-0.245*tan(diff_yaw*M_PI/180)/2) / (M_PI*0.1025)*180);
+	double right_wheel = ((diff_linear-0.245*tan(diff_yaw*M_PI/180)/2) / (M_PI*0.1025)*180);
 	std::cout << "left_wheel: " << left_wheel << std::endl;
 	std::cout << "right_wheel: " << right_wheel << std::endl;
 
