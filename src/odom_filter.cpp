@@ -29,6 +29,8 @@ private:
 	nav_msgs::Odometry current_odom_;
 	// nav_msgs::Odometry last_odom_;
 	bool init_callback = false;
+	double current_linear;
+	double last_linear;
 	double current_yaw;
 	double last_yaw;
 };
@@ -53,15 +55,24 @@ void OdomFilter::odom_callback(const nav_msgs::OdometryConstPtr& msg)
 	current_odom_ = *msg;
 	// filterinng
 	// current_yaw = get_yaw(current_odom_.pose.pose.orientation);
+	current_linear = current_odom_.twist.twist.linear.x;
+	double diff_linear = current_linear - current_linear;
 	current_yaw = tf2::getYaw(current_odom_.pose.pose.orientation);
 	double diff_yaw = current_yaw - last_yaw;
     diff_yaw = atan2(sin(diff_yaw), cos(diff_yaw));
-	std::cout << "curr_yaw: " << current_yaw << std::endl;
-	std::cout << "diff_yaw: " << diff_yaw << std::endl;
+
+	double left_wheel = (diff_linear+0.245*tan(diff_yaw*M_PI/180)/2) / (M_PI*0.1025)*180;
+	double left_wheel = (diff_linear-0.245*tan(diff_yaw*M_PI/180)/2) / (M_PI*0.1025)*180;
+	std::cout << "left_wheel: " << left_wheel << std::endl;
+	std::cout << "right_wheel: " << right_wheel << std::endl;
+
+	// std::cout << "curr_yaw: " << current_yaw << std::endl;
+	// std::cout << "diff_yaw: " << diff_yaw << std::endl;
 	if(init_callback == true && diff_yaw < 0.05){
 		odom_filter_pub_.publish(current_odom_);
 	}
 	last_yaw = current_yaw;
+	last_linear = current_linear;
 	init_callback = true;
 }
 void OdomFilter::process()
