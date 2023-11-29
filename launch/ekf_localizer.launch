@@ -56,7 +56,7 @@
 		<param name="is_publish_map" value="true" />
 		<param name="is_pcl_offset" value="true" />
 		<param name="MATCHING_SCORE_TH" value="0.7" />
-		<rosparam command="load" file="$(find ekf_localizer)/config/map_matcher/map_matcher.yaml" />
+		<rosparam command="load" file="$(find ekf_localizer)/config/map_matcher/map_matcher_extra.yaml" />
 	</node>
 
 	<!-- tf -->
