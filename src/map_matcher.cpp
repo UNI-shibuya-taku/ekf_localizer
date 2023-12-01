@@ -220,9 +220,9 @@ void MapMatcher::matching(pcl::PointCloud<pcl::PointXYZI>::Ptr map_pcl,pcl::Poin
 	ndt.setInputSource(current_local_pcl);
 	if(current_local_pcl->points.size() > map_local_pcl->points.size()){
 		std::cout << "local clouds > map clouds" << std::endl;
-		// return;
+		return;
 	}
-	ndt.align(*ndt_pcl, init_guess);
+	ndt.align(*ndt_pcl,init_guess);
 	//ndt.align(*ndt_pcl,Eigen::Matrix4f::Identity());
 	if(!ndt.hasConverged()){
 		std::cout << "Has converged" << std::endl;
