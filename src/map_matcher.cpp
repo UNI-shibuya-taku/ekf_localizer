@@ -18,7 +18,7 @@ MapMatcher::MapMatcher() :
 	private_nh_.param("is_publish_map",is_publish_map_,{true});
 	private_nh_.param("is_pcl_offset",is_pcl_offset_,{false});
 
-	private_nh_.param("VOXEL_SIZE",VOXEL_SIZE_,{1.0});
+	private_nh_.param("VOXEL_SIZE",VOXEL_SIZE_,{0.2});
 	private_nh_.param("LIMIT_RANGE",LIMIT_RANGE_,{20.0});
 	private_nh_.param("TRANS_EPSILON",TRANS_EPSILON_,{0.001});
 	private_nh_.param("STEP_SIZE",STEP_SIZE_,{0.1});
