@@ -150,8 +150,9 @@ void MapMatcher::read_map()
 
 	std::cout  << "raw map_points: " << raw_cloud->points.size() << std::endl;
 	// downsampling
-	if(VOXEL_SIZE_ > 0) downsample_pcl(raw_cloud,map_pcl_,VOXEL_SIZE_);
-	else map_pcl_ = raw_cloud;
+	// if(VOXEL_SIZE_ > 0) downsample_pcl(raw_cloud,map_pcl_,VOXEL_SIZE_);
+	// else map_pcl_ = raw_cloud;
+	map_pcl_ = raw_cloud;
 	std::cout  << "down map_points: " << map_pcl_->points.size() << std::endl;
 
 	// offset
