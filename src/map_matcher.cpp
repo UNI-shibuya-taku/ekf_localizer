@@ -122,7 +122,7 @@ void MapMatcher::set_pcl(pcl::PointCloud<pcl::PointXYZI>::Ptr input_pcl,pcl::Poi
 
 	pass.setInputCloud(output_pcl);
 	pass.setFilterFieldName("z");
-	pass.setFilterLimits(-5 + z,5 + z);
+	pass.setFilterLimits(-15 + z,15 + z);
 	pass.filter(*output_pcl);
 	std::cout << "output_pcl size z: " << output_pcl->points.size() << std::endl;
 
